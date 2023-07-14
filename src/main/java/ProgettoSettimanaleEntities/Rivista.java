@@ -1,6 +1,8 @@
 package ProgettoSettimanaleEntities;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,6 +14,7 @@ import lombok.Setter;
 @NoArgsConstructor
 
 public class Rivista extends Cartaceo {
+	@Enumerated(EnumType.STRING)
 	private Periodicita periodicita;
 
 	public Rivista(String titolo, int numeroPagine, int annoPubblicazione,

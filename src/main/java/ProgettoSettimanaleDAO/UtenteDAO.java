@@ -23,14 +23,21 @@ public class UtenteDAO {
 		t.begin();
 		em.persist(utente);
 		t.commit();
-		System.out.println(utente + " è stata salvata correttamente");
+		System.err.println(utente + " è stata salvata correttamente");
 	}
 
 	public List<Prestito> cercaPrestiti(UUID numeroTessera) {
 		TypedQuery<Prestito> query = em
 				.createQuery("SELECT p FROM Prestito p WHERE p.utente.numeroTessera = :numeroTessera", Prestito.class);
 		query.setParameter("numeroTessera", numeroTessera);
-		return query.getResultList();
+		List<Prestito> prestiti = query.getResultList();
+
+		if (prestiti.isEmpty()) {
+			System.err.println("L'utente " + numeroTessera + " non ha nessun libro in prestito.");
+		}
+
+		return prestiti;
 	}
+
 
 }

@@ -26,8 +26,14 @@ public class CartaceoDao {
 
 	public Cartaceo getById(UUID id) {
 		Cartaceo cartaceoTrovato = em.find(Cartaceo.class, id);
+
+		if (cartaceoTrovato == null) {
+			System.err.println("In catalogo non esiste nessuna copia con questo codice ISBN.");
+		}
+
 		return cartaceoTrovato;
 	}
+
 
 	@SuppressWarnings("null")
 	public void delete(UUID id) {
@@ -44,22 +50,18 @@ public class CartaceoDao {
 
 	}
 
-//	public void refresh(Cartaceo object) {
-//		EntityManager em = JpaUtilies.getEntityManagerFactory().createEntityManager();
-//		try {
-//
-//			em.refresh(object);
-//
-//		} finally {
-//			em.close();
-//		}
-//
-//	}
+
 
 	public List<Cartaceo> findByYear(int annoPubblicazione) {
 		TypedQuery<Cartaceo> query = em.createNamedQuery("ricercaPerAnno", Cartaceo.class);
 		query.setParameter("annoPubblicazione", annoPubblicazione);
 		List<Cartaceo> listaCartaceiPerAnno = query.getResultList();
+
+		if (listaCartaceiPerAnno.isEmpty()) {
+			System.err
+					.println("Nel catalogo non è presente nessun testo con anno di pubblicazione " + annoPubblicazione);
+		}
+
 		return listaCartaceiPerAnno;
 	}
 
@@ -67,6 +69,11 @@ public class CartaceoDao {
 		TypedQuery<Cartaceo> query = em.createNamedQuery("ricercaPerAutore", Cartaceo.class);
 		query.setParameter("autore", autore);
 		List<Cartaceo> listaCartaceiPerAutore = query.getResultList();
+
+		if (listaCartaceiPerAutore.isEmpty()) {
+			System.err.println("Nel catalogo non è presente nessun testo di " + autore);
+		}
+
 		return listaCartaceiPerAutore;
 	}
 
@@ -74,7 +81,14 @@ public class CartaceoDao {
 		TypedQuery<Cartaceo> query = em.createNamedQuery("ricercaPerTitolo", Cartaceo.class);
 		query.setParameter("titolo", "%" + titolo + "%");
 		List<Cartaceo> listaCartaceiPerTitolo = query.getResultList();
+
+		if (listaCartaceiPerTitolo.isEmpty()) {
+			System.err.println(
+					"Nel catalogo non è presente nessun testo il cui titolo contenga le parole '" + titolo + "'");
+		}
+
 		return listaCartaceiPerTitolo;
 	}
+
 
 }

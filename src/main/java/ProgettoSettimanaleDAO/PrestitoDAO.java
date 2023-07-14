@@ -21,7 +21,7 @@ public class PrestitoDAO {
 		t.begin();
 		em.persist(prestito);
 		t.commit();
-		System.out.println(prestito + " è stata salvata correttamente");
+		System.err.println(prestito + " è stata salvata correttamente");
 	}
 
 	public List<Prestito> cercaPrestitiScaduti() {

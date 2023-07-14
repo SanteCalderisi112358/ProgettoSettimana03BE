@@ -26,7 +26,7 @@ public class ProgettoSettimana03 {
 		PrestitoDAO prestitoDAO = new PrestitoDAO(em);
 		UtenteDAO utenteDAO = new UtenteDAO(em);
 
-		/* ISTANZE 5 LIBRI E 5 RIVISTE */
+		/* ISTANZE LIBRI E RIVISTE */
 		Rivista rivista01 = new Rivista("Mondo Nuovo", 34, 1989, Periodicita.MENSILE);
 		Rivista rivista02 = new Rivista("Mondo Oggi", 42, 2021, Periodicita.MENSILE);
 		Rivista rivista03 = new Rivista("Nonna Moderna", 13, 1978, Periodicita.SETTIMANALE);
@@ -64,23 +64,18 @@ public class ProgettoSettimana03 {
 		/* ISTANZIO 10 PRESTITI */
 
 		Prestito prestito01 = new Prestito(LocalDate.of(2022, 4, 19), null,
-				new Rivista("Mondo Nuovo", 34, 1989, Periodicita.MENSILE),
-				new Utente("Sante", "Calderisi", "sante@gmail.com", LocalDate.of(1989, 8, 17)));
+				rivista01, utente01);
 		Prestito prestito02 = new Prestito(LocalDate.of(2021, 3, 15), LocalDate.of(2021, 3, 20),
-				new Rivista("Mondo Oggi", 42, 2021, Periodicita.MENSILE),
-				new Utente("Sante", "Calderisi", "sante@gmail.com", LocalDate.of(1989, 8, 17)));
+				rivista02, utente02);
 		Prestito prestito03 = new Prestito(LocalDate.of(2023, 5, 3), null,
-				new Libro("Il Signore degli Anelli", 1344, 1973, Genere.FANTASY, "J.R.R. Tolkien"),
-				new Utente("Erika", "Quitadamo", "erika@yahoo.com", LocalDate.of(1993, 10, 10)));
+				libro01, utente03);
 		Prestito prestito04 = new Prestito(LocalDate.of(2023, 5, 3), LocalDate.of(2023, 6, 7),
-				new Libro("IT", 1239, 1989, Genere.HORROR, "Stephen King"),
-				new Utente("Luca", "Bianchi", "luca@gmail.com", LocalDate.of(1965, 11, 10)));
+				rivista03, utente04);
 		Prestito prestito05 = new Prestito(LocalDate.of(2023, 5, 3), LocalDate.of(2023, 6, 7),
-				new Rivista("Nonna Moderna", 13, 1978, Periodicita.SETTIMANALE),
-				new Utente("Luca", "Bianchi", "luca@gmail.com", LocalDate.of(1965, 11, 10)));
+				libro03, utente05);
 		Prestito prestito06 = new Prestito(LocalDate.of(2023, 6, 9), null,
-				new Libro("IT", 1239, 1989, Genere.HORROR, "Stephen King"),
-				new Utente("Anna", "Neri", "anna@email.com", LocalDate.of(1992, 9, 20)));
+				libro01,
+				utente07);
 
 
 //		prestitoDAO.save(prestito01);
@@ -88,8 +83,7 @@ public class ProgettoSettimana03 {
 //		prestitoDAO.save(prestito03);
 //		prestitoDAO.save(prestito04);
 //		prestitoDAO.save(prestito05);
-
-		// prestitoDAO.save(prestito06);
+//		prestitoDAO.save(prestito06);
 
 		/* ELIMINAZIONE DA ISBN */
 
@@ -97,12 +91,12 @@ public class ProgettoSettimana03 {
 
 		/* RICERCA TRAMITE ISBN */
 
-		// System.err.println(cartaceoDAO.getById(UUID.fromString("4f486cd4-32a0-48b2-8d99-202d4f889653")));
+		// System.err.println(cartaceoDAO.getById(UUID.fromString("10b30e6e-978f-4d62-9ae9-04b3310656c7")));
 
 		/* RICERCA PER ANNO */
 
-		// cartaceoDAO.findByYear(1989).forEach(cartaceo ->
-		// System.err.println(cartaceo+"\n"));
+		// cartaceoDAO.findByYear(1900).forEach(cartaceo -> System.err.println(cartaceo
+		// + "\n"));
 
 		/* RICERCA PER SUTORE */
 
@@ -115,12 +109,13 @@ public class ProgettoSettimana03 {
 
 		/* RICERCA PRESTITI TRAMITE NUMERO TESSERA */
 
-		//utenteDAO.cercaPrestiti(UUID.fromString("36459edd-b47f-4a0f-b456-a72da648a1cf"))
+		// utenteDAO.cercaPrestiti(UUID.fromString("413ae565-ab4f-4b06-ac1b-a7200fa1bcda"))
 		// .forEach(c -> System.err.println(c + "\n"));
 
 		/* RICERCA PRESTITI SCADUTI */
 
-		prestitoDAO.cercaPrestitiScaduti().forEach(c -> System.err.println(c + "\n"));
+		// prestitoDAO.cercaPrestitiScaduti().forEach(c -> System.err.println(c +
+		// "\n"));
 
 		/* CHIUSURA ENTITYMANAGER E ENTITYMANAGERFACTORY */
 		em.close();

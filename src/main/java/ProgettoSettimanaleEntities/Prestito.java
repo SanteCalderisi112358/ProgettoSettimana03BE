@@ -41,4 +41,11 @@ public class Prestito {
 		this.utente = utente;
 	}
 
+	@Override
+	public String toString() {
+		return "Prestito [id=" + id + ", Inizio Prestito=" + inizioPrestito + ", Termine Prestito Previsto="
+				+ terminePrestitoPrevisto + ", Fine Prestito Effettivo=" + finePrestitoEffettivo
+				+ ", Prodotti Presi In Prestito=" + cartaceoPresoInPrestito + utente + "]";
+	}
+
 }

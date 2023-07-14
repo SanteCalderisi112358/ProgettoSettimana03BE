@@ -1,7 +1,7 @@
 package ProgettoSettimanaleEntities;
 
 import java.time.LocalDate;
-import java.util.Set;
+import java.util.List;
 import java.util.UUID;
 
 import javax.persistence.Entity;
@@ -29,7 +29,7 @@ public class Utente {
 	private String email;
 	private LocalDate dataNascita;
 	@OneToMany(mappedBy = "utente")
-	private Set<Prestito> prestitiFatti;
+	private List<Prestito> prestitiFatti;
 
 	public Utente(String nome, String cognome, String email, LocalDate dataNascita) {
 
@@ -40,6 +40,11 @@ public class Utente {
 
 	}
 
+	@Override
+	public String toString() {
+		return "Utente [Numero Tessera=" + numeroTessera + ", Nome=" + nome + ", Cognome=" + cognome + ", email="
+				+ email + ", Data di Nascita=" + dataNascita + "]";
+	}
 
 
 }

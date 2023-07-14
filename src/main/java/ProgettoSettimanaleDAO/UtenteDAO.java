@@ -1,9 +1,15 @@
 package ProgettoSettimanaleDAO;
 
+import java.util.List;
+import java.util.UUID;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
 
+import ProgettoSettimanaleEntities.Prestito;
 import ProgettoSettimanaleEntities.Utente;
+
 
 public class UtenteDAO {
 	private EntityManager em;
@@ -19,4 +25,12 @@ public class UtenteDAO {
 		t.commit();
 		System.out.println(utente + " è stata salvata correttamente");
 	}
+
+	public List<Prestito> cercaPrestiti(UUID numeroTessera) {
+		TypedQuery<Prestito> query = em
+				.createQuery("SELECT p FROM Prestito p WHERE p.utente.numeroTessera = :numeroTessera", Prestito.class);
+		query.setParameter("numeroTessera", numeroTessera);
+		return query.getResultList();
+	}
+
 }

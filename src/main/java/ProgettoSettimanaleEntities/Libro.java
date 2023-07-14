@@ -14,6 +14,13 @@ public class Libro extends Cartaceo {
 	private Genere genere;
 	private String autore;
 
+	public Libro(String titolo, int numeroPagine, int annoPubblicazione,
+			Genere genere, String autore) {
+		super(titolo, numeroPagine, annoPubblicazione);
+		this.genere = genere;
+		this.autore = autore;
+	}
+
 
 
 

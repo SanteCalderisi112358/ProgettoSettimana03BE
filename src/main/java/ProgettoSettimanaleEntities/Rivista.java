@@ -13,6 +13,11 @@ import lombok.Setter;
 public class Rivista extends Cartaceo {
 	private Periodicita periodicita;
 
+	public Rivista(String titolo, int numeroPagine, int annoPubblicazione,
+			Periodicita periodicita) {
+		super(titolo, numeroPagine, annoPubblicazione);
+		this.periodicita = periodicita;
+	}
 
 
 

@@ -1,5 +1,6 @@
 package ProgettoSettimanaleEntities;
 
+import java.time.LocalDate;
 import java.util.Set;
 import java.util.UUID;
 
@@ -22,19 +23,23 @@ import lombok.Setter;
 public class Utente {
 	@Id
 	@GeneratedValue
-	private UUID id;
+	private UUID numeroTessera;
 	private String nome;
 	private String cognome;
 	private String email;
+	private LocalDate dataNascita;
 	@OneToMany(mappedBy = "utente")
 	private Set<Prestito> prestitiFatti;
 
-	public Utente(String nome, String cognome, String email) {
+	public Utente(String nome, String cognome, String email, LocalDate dataNascita) {
 
 		this.nome = nome;
 		this.cognome = cognome;
 		this.email = email;
+		this.dataNascita = dataNascita;
 
 	}
+
+
 
 }

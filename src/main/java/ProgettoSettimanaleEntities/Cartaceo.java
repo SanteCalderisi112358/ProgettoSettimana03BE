@@ -33,6 +33,14 @@ public abstract class Cartaceo {
 	@OneToMany(mappedBy = "cartaceoPresoInPrestito")
 	private Set<Prestito> prestiti;
 
+	public Cartaceo(String titolo, int numeroPagine, int annoPubblicazione) {
+
+
+		this.titolo = titolo;
+		this.numeroPagine = numeroPagine;
+		this.annoPubblicazione = annoPubblicazione;
+
+	}
 
 
 

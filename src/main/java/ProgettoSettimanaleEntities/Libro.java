@@ -21,6 +21,11 @@ public class Libro extends Cartaceo {
 		this.autore = autore;
 	}
 
+	@Override
+	public String toString() {
+		return "Libro [Genere=" + genere + ", Autore=" + autore + ", Isbn=" + getIsbn() + ", Titolo=" + getTitolo()
+				+ ", Numero Pagine=" + getNumeroPagine() + ", Anno Pubblicazione=" + getAnnoPubblicazione() + "]";
+	}
 
 
 

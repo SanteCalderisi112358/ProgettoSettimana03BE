@@ -10,6 +10,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @NoArgsConstructor
+
 public class Rivista extends Cartaceo {
 	private Periodicita periodicita;
 
@@ -19,6 +20,12 @@ public class Rivista extends Cartaceo {
 		this.periodicita = periodicita;
 	}
 
+	@Override
+	public String toString() {
+		return "Rivista [Periodicita=" + periodicita + ",Isbn=" + getIsbn() + ",Titolo=" + getTitolo()
+				+ ", Numero Pagine=" + getNumeroPagine() + ", Anno Pubblicazione=" + getAnnoPubblicazione()
+				+ "]";
+	}
 
 
 }

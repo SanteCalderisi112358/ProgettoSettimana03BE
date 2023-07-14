@@ -43,7 +43,7 @@ public class CartaceoDao {
 			t.begin();
 			em.remove(cartaceoTrovato);
 			t.commit();
-			System.err.println(cartaceoTrovato.toString() + " è stat*eliminat*");
+			System.err.println(cartaceoTrovato.toString() + " è stato eliminato");
 		} else {
 			System.err.println(cartaceoTrovato.toString() + " non è presente.");
 		}
